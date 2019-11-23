@@ -13,34 +13,45 @@
 # touch 01-out.txt
 # file=01-out.txt
 
-echo " " # >> ${file}
-echo "hello world" # >> ${file}
-echo " " # >> ${file}
+function format() {
+	echo " " # >> ${file}
+	echo ${1} # >> ${file}
+	echo " " # >> ${file}
+}
 
-echo " " # >> ${file}
-echo ${HOME} # >> ${file}
-echo " " # >> ${file}
+format "hello world"
+# echo " " # >> ${file}
+# echo "hello world" # >> ${file}
+# echo " " # >> ${file}
+
+format ${HOME}
+# echo " " # >> ${file}
+# echo ${HOME} # >> ${file}
+# echo " " # >> ${file}
 
 root=`ls /`
-echo " " # >> ${file}
-echo "this is root: `echo ${root}`" # >> ${file}
-echo " " # >> ${file}
+format "this is root: `echo ${root}`"
+# echo " " # >> ${file}
+# echo "this is root: `echo ${root}`" # >> ${file}
+# echo " " # >> ${file}
 
-echo " " # >> ${file}
-(echo "`ls /home/joes/there-is-no-such-file`" || echo "--!error!--") # >> ${file}
-echo " " # >> ${file}
+format "`ls /home/joes/there-is-no-such-file`" || echo "--!error!--"
+# echo " " # >> ${file}
+# (echo "`ls /home/joes/there-is-no-such-file`" || echo "--!error!--") # >> ${file}
+# echo " " # >> ${file}
 
-echo " " # >> ${file}
-(ls /home/joes/there-is-no-such-file || echo "--!error!--") # >> ${file}
-echo " " # >> ${file}
+format "`(ls /home/joes/there-is-no-such-file || echo "--!error!--")`"
+# echo " " # >> ${file}
+# (ls /home/joes/there-is-no-such-file || echo "--!error!--")
+# echo " " # >> ${file}
 
-echo " " # >> ${file}
+# echo " " # >> ${file}
 function print_args() {
         if [[ $# = 3 ]]; then
                 i=1
-                echo "args: " # >> ${file}
+                echo "args are: " # >> ${file}
                 for arg in $@; do
-                        echo "     arg ${i}: ${arg}" # >> ${file}
+                        echo "     (${i}) ${arg}" # >> ${file}
                         i=$((i + 1))
                 done
         else
@@ -48,5 +59,8 @@ function print_args() {
                 echo "     ./home/joes/bin/${0}  <foo> <bar> <baz>" # >> ${file}
         fi
 }
-print_args ${1} ${2} ${3}
-echo " " # >> ${file}
+
+args=`print_args ${1} ${2} ${3}`
+# echo ${args}
+format "${args[@]}"
+# echo " " # >> ${file}
