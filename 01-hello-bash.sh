@@ -25,7 +25,7 @@ if [[ $# != 3 ]]; then
 	echo "wrong number of arguments. call with three arguments:"
 	echo "     ./${0}  <foo> <bar> <baz>"
 	echo " "
-	exit
+	exit 1
 fi
 
 #################### FUNCTIONS ####################
@@ -73,4 +73,4 @@ counter=${PIPESTATUS[1]}
 
 echo " "
 
-exit
+exit 0

@@ -21,10 +21,11 @@ if [[ $# != 0 ]]; then
         $vecho "--!error!--"
         $vecho "V 1 of this program does not take arguments"
         $vecho "call without arguments or wait for V 2 dammit"
+	exit 1
 else
         # get weather using curl
 	vcurl="${path}curl"
         $vcurl wttr.in
 fi
 
-exit
+exit 0
