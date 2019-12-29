@@ -13,7 +13,8 @@ vdpkg="${path}dpkg"
 vsudo="${path}sudo"
 vaptget="${path}sudo"
 vinstall="${path}install"
-$vdpkg -s curl || $vsudo $vaptget -y $vinstall curl
+
+$vdpkg -s curl > /dev/null || $vsudo $vaptget -y $vinstall curl > /dev/null
 
 # return error if user passes arguments
 if [[ $# != 0 ]]; then
