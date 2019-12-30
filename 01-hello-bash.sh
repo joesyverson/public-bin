@@ -8,17 +8,9 @@
 	# or
 	# bash 01-hello-bash.sh <foo> <bar> <baz>
 
-#################### BEGIN SCRIPT ####################
+#################### CHECK ERRORS ####################
 
-echo " "
-echo "*************** ${0} ***************"
-
-counter=0
-
-# touch 01-out.txt
-# file=01-out.txt
-
-if [[ $# != 3 ]]; then
+if [[ $# != 3 ]]; then # test for number of arguments
 	echo " "
 	echo "!error!"
 	echo " "
@@ -28,31 +20,39 @@ if [[ $# != 3 ]]; then
 	exit 1
 fi
 
-#################### FUNCTIONS ####################
+#################### FUNCTIONS AND VARIABLES ####################
 
-function format() {
+# touch 01-out.txt
+# file=01-out.txt
+
+counter=0 # set global variable counter
+
+function format() { # format terminal output
 	# file=01-out.txt
 	echo " " # >> ${file}
-	let counter=$((counter+1))
+	let counter=$((counter+1)) # increment global counter variable
 	echo "--------------- ${counter} ---------------"
 	echo " "
-	echo ${1} | head -n 1 # >> ${file}
+	echo ${1} | head -n 1 # >> ${file} # print first line of echoed argument
 	return ${counter}
 }
 
-function print_args() {
-	i=1
-	echo "args are: " 
-	for arg in $@; do
+function print_args() { # function for printing arguments along with the corresponding index from the args array
+	i=1 # create counter variable
+	echo "args are: "
+	for arg in $@; do # do the following for all arguments
 	        echo "     (${i}) ${arg}"
-	        i=$((i + 1))
+	        i=$((i + 1)) # increment counter
 	done
 }
 
 #################### COMMANDS ####################
 
-echo "save" | format "hello world"
-counter=${PIPESTATUS[1]}
+echo " "
+echo "*************** ${0} ***************" # interpolate filename into string
+
+echo "save" | format "hello world" # pipe command into function to preserve return statement in $PIPESTATUS
+counter=${PIPESTATUS[1]} # reset counter to the return value of format
 
 echo "save" | format ${HOME}
 counter=${PIPESTATUS[1]}

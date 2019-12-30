@@ -7,13 +7,18 @@
         # in ~/.bashrc or /etc/bash.bashrc write
                 # alias weather="<path>/02-weather.sh"
 
-# get curl if not installed
+################### BEGIN SCRIPT  ###################
+
+# save command paths to variables for readability
 path="/usr/bin/"
 vdpkg="${path}dpkg"
 vsudo="${path}sudo"
 vaptget="${path}sudo"
 vinstall="${path}install"
 
+#################### COMMANDS ###################
+
+# get curl if not installed
 $vdpkg -s curl > /dev/null || $vsudo $vaptget -y $vinstall curl > /dev/null
 
 # return error if user passes arguments

@@ -2,7 +2,11 @@
 
 # scripts for Joe Collins Youtube tutorial
 
+################### VARIABLES ###################
+
 format='echo "Exit code: $?" && echo " "' # store this command to be called later like a function
+
+################### COMMANDS ###################
 
 cat << _EOF_ # create a block of formatted text
 
