@@ -22,18 +22,19 @@ fi
 
 #################### FUNCTIONS AND VARIABLES ####################
 
-# touch 01-out.txt
-# file=01-out.txt
+[ ! -f /tmp/01-hello-bash.log ] && touch /tmp/01-hello-bash.log && echo " " > /tmp/01-hello-bash.sh ||
+	echo " " > /tmp/01-hello-bash.log # make a file in temporary directory or wipe file if it already exists
+log_file="/tmp/01-hello-bash.log" # set variable for log file
 
 counter=0 # set global variable counter
 
 function format() { # format terminal output
-	# file=01-out.txt
-	echo " " # >> ${file}
+	log_file="/tmp/01-hello-bash.log" # reset variable for function scope
+	echo " " | tee -a ${log_file} # output to terminal and send the output to log file
 	let counter=$((counter+1)) # increment global counter variable
-	echo "--------------- ${counter} ---------------"
-	echo " "
-	echo ${1} | head -n 1 # >> ${file} # print first line of echoed argument
+	echo "--------------- ${counter} ---------------" | tee -a ${log_file}
+	echo " " | tee -a ${log_file}
+	echo ${1} | head -n 1 | tee -a ${log_file} # print first line of echoed argument
 	return ${counter}
 }
 
@@ -48,8 +49,8 @@ function print_args() { # function for printing arguments along with the corresp
 
 #################### COMMANDS ####################
 
-echo " "
-echo "*************** ${0} ***************" # interpolate filename into string
+echo " " | tee -a ${log_file}
+echo "*************** ${0} ***************" | tee -a ${log_file} # interpolate filename into string
 
 echo "save" | format "hello world" # pipe command into function to preserve return statement in $PIPESTATUS
 counter=${PIPESTATUS[1]} # reset counter to the return value of format
@@ -71,6 +72,6 @@ args=`print_args ${1} ${2} ${3}`
 echo "save" | format "${args[@]}"
 counter=${PIPESTATUS[1]}
 
-echo " "
+echo " " | tee -a ${log_file}
 
 exit 0
