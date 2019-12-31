@@ -45,6 +45,8 @@ if [ "$?" != "0" ]; then # check exit code of previous command
 else
 	echo 'Congrats! you have "ifconfig"' # or congratulate user for having net tools
 fi
-eval "$format"
+
+echo $'\n'$"place a blank line above this text" #places blank line above output
+echo " "
 
 exit 0
