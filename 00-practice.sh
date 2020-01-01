@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # scripts for practice prompts in the Linux Bible and Joe Collins's Youtube tutorial
 # currently the concatination of two separarate scripts
+### 03-linux-bible.sh
+### 04-joe-collins.sh
 # to be refactored into a single, continuous and DRY script
 
 ################### VARIABLES ###################
@@ -10,28 +12,42 @@ ONE=${1}
 TWO=${2}
 THREE=${3}
 
-################### COMMANDS  ###################
+format='echo "Exit code: $?" && echo " "' # store this command to be called later like a function
 
-# myownscript
+################### BEGIN SCRIPT ###################
 echo " "
+
+#------------------ 01 ------------------#
+
+# break a single line into two using back slash
+echo 'hello' \
+	&& echo 'world' > /dev/null # redirect second line to nowhere so it is not logged to terminal
+eval "$format" # format according to command stored in the $format variable above
+
+#------------------ 02 ------------------#
+
+eval "$format"
 echo "Today is `date`." # interpolate date command into string
 echo "You are in $(pwd) and your host is `hostname`." # interpolate commands pwd and hostname into string
 
-# script2
-echo " "
+#------------------ 03 ------------------#
+
+eval "$format"
 echo "There are ${#} parameters that include: ${@}." # interpolate number of args and args into string
 echo "The first is ${ONE}, the second is ${TWO}, the third is ${THREE}." # interpolate the first three arguments into string
 
-# script3
-echo " "
+#------------------ 04 ------------------#
+
+eval "$format"
 read -p  "Please enter the street that you grew up on: " # prompt user for input
 STREET=$REPLY # store input to variable
 read -p "Please enter the town that you grew up in: "
 TOWN=$REPLY
 echo "     The street I grew up on was ${STREET} and the town was ${TOWN}."
 
-# myos
-echo " "
+#------------------ 05 ------------------#
+
+eval "$format"
 read -p "What's your favorite operating system? "
 case $REPLY in # test cases for user input
 	"Mac" | "mac") # accept capitalized and lowercase input
@@ -44,32 +60,28 @@ case $REPLY in # test cases for user input
 		echo "     Well I just don't know what to think.";;
 esac
 
-# script5
-echo " "
+#------------------ 06 ------------------#
+
+eval "$format"
 for animal in "moose" "cow" "goose" "sow"; do # print args array in string
 	echo "I have a ${animal}."
 done
 
-################### VARIABLES ###################
-
-format='echo "Exit code: $?" && echo " "' # store this command to be called later like a function
-
-################### COMMANDS ###################
-
-# break a single line into two using back slash
-echo 'hello' \
-	&& echo 'world' > /dev/null # redirect second line to nowhere so it is not logged to terminal
-eval "$format" # format according to command stored in the $format variable above
+#------------------ 07 ------------------#
 
 [ -d ~/Development/non-exist ] && # check for the existence of directory
 	echo 'Present: directory "non-exist"' ||
 	echo 'Absent: direrctory "non-exist"'
 ls /non-exist > /dev/null 2>&1 # redirect all output to nowhere
-eval "$format" 
+eval "$format"
+
+#------------------ 08 ------------------#
 
 ls /non-exist > /dev/null ||
 	echo 'Error: this is an explicit error message for the above error' >&2 # redirect custom error message to $STDERR
 eval "$format"
+
+#------------------ 09 ------------------#
 
 echo 'Is the "weather" script here?'
 test -f ~/Development/public-bin/02-weather.sh && echo 'Yep' || echo 'Nope'
@@ -85,8 +97,12 @@ else
 	echo 'Congrats! you have "ifconfig"' # or congratulate user for having net tools
 fi
 
+#------------------ 10 ------------------#
+
 echo $'\n'$"place a blank line above this text" #places blank line above output
 eval "$format"
+
+#------------------ 11 ------------------#
 
 cat << _eof_ # create a block of formatted text
 
