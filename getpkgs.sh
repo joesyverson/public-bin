@@ -14,7 +14,7 @@ getit() {
 
 	if [ $1 == 'basic' ]; then
 		echo $'\n...getting basic CLI packages...'
-		declare -a packages=( "tree" "locate" "alpine" "cmus" "htop" "mc" "tmux" "dictd" "curl" "wget" "net-tools" "xclip" "w3m" "vim" "bc" "weather" )
+		declare -a packages=( "tree" "locate" "alpine" "cmus" "htop" "mc" "tmux" "dictd" "curl" "wget" "net-tools" "xclip" "w3m" "vim" "bc" "weather" "ffmpeg" )
 	else
 		echo $'\n...getting basic GUI packages...'
 		# gimp inkscape
