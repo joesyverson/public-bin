@@ -14,11 +14,16 @@ getit() {
 
 	if [ $1 == 'basic' ]; then
 		echo $'\n...getting basic CLI packages...'
-		declare -a packages=( "tree" "locate" "alpine" "cmus" "htop" "mc" "tmux" "dictd" "curl" "wget" "net-tools" "xclip" "w3m" "vim" "bc" "weather" "ffmpeg" )
+<<<<<<< HEAD
+        packages=$(cat ./public-bin/conf/pkglist.conf)
+=======
+        packages=$(cat ./conf/pkglist.conf)
+>>>>>>> b909197... Add upconf and configure
+#		declare -a packages=( "tree" "locate" "alpine" "cmus" "htop" "mc" "tmux" "dictd" "curl" "wget" "net-tools" "xclip" "w3m" "vim" "bc" "weather" "ffmpeg" "nmap" )
 	else
 		echo $'\n...getting basic GUI packages...'
 		# gimp inkscape
-		declare -a packages=( "firefox" "subl" "gpick" "transmission" "redshift-gtk" "vlc" "gthumb" )
+		declare -a packages=( "firefox" "gpick" "transmission" "redshift-gtk" "vlc" "gthumb" )
 	fi
 
 	for package in ${packages[@]}; do

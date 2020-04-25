@@ -5,6 +5,7 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
-
 " On pressing F9, toggle paste mode
 set pastetoggle=<F9>
+" Number lines
+set number

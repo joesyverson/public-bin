@@ -118,6 +118,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Sergiu's kick ass git log config
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit --"
+<<<<<<< HEAD:conf/.bashrc
+=======
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+>>>>>>> b909197... Add upconf and configure:configs/.bashrc
 
+export PATH="$PATH:$HOME/bin"
+export HAFH="/media/joes/PATRIOT/"
