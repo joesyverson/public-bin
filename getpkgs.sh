@@ -14,11 +14,7 @@ getit() {
 
 	if [ $1 == 'basic' ]; then
 		echo $'\n...getting basic CLI packages...'
-<<<<<<< HEAD
-        packages=$(cat ./public-bin/conf/pkglist.conf)
-=======
-        packages=$(cat ./conf/pkglist.conf)
->>>>>>> b909197... Add upconf and configure
+        	packages=$(cat ~/bin/public-bin/conf/pkglist.conf)
 #		declare -a packages=( "tree" "locate" "alpine" "cmus" "htop" "mc" "tmux" "dictd" "curl" "wget" "net-tools" "xclip" "w3m" "vim" "bc" "weather" "ffmpeg" "nmap" )
 	else
 		echo $'\n...getting basic GUI packages...'

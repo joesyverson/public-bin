@@ -1,47 +1,39 @@
+
+# KERNEL AND HARWARE
 # list hardware: pulls up data on memory
 lshw -class memory
-<<<<<<< HEAD
-# find your public IP
-dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
-dig short myip.opendns.com @resolver1.opendns.com
-=======
-
-# find your public IP
-dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
-dig short myip.opendns.com @resolver1.opendns.com
-
->>>>>>> b909197... Add upconf and configure
-# list IP's on LAN
-## example: sudo nmap -sn [IP]/[range in CIDR notation]
-sudo nmap -sn 192.167.1.0/24 # last field turned to "0" to scan full range (0-255)
-# find IP and subnet mask
-ifconfig | grep -e inet | grep netmask | tail -1
-<<<<<<< HEAD
 # get info on memory
 sudo dmidecode -t 16
 sudo dmidecode -t 17 | grep Size
 # other hardware commands
 lspci
-lshw
 # graphics
 sudo add-apt-repository ppa:graphics-drivers/ppa # BEWARE ONLY BAD FEELINGS FROM THIS REPO :(
 sudo apt-get update
 # disabling secure boot
 sudo mokutil --disable-validation
-# enter temporary password
-reboot
-# use password to disable when prompted
-# heavy command for listing extra drivers
-ubuntu-drivers devices
 # list installed modules
 lsmod
+
+# NETWORK
+# find your public IP
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+dig short myip.opendns.com @resolver1.opendns.com
+# list IP's on LAN
+## example: sudo nmap -sn [IP]/[range in CIDR notation]
+sudo nmap -sn 192.167.1.0/24 # last field turned to "0" to scan full range (0-255)
+# find IP and subnet mask
+ifconfig | grep -e inet | grep netmask | tail -1
+
+
 # list size of drive
 fdisk -l | grep <drive>
 # get size of data in given directory (or file?)
 du -sh <dir>
 # get device and related mount point
-df | grep <drive>
-# important logs
+df -h | grep <drive>
+
+# LOGS
 # /var/log/syslog                   # generic sys message, cron is logged here too
 # /var/log/auth.log                 # all auth events
 # /var/log/dmesg                    # hardware / kernel
@@ -49,6 +41,4 @@ df | grep <drive>
 # /var/log/boot.log                 # boot, init, shutdown
 # /var/log/faillog                  # failed logins
 # /var/log/apt/                     # directory with history and term
-#
-=======
->>>>>>> b909197... Add upconf and configure
+
