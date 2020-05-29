@@ -24,7 +24,24 @@ dig short myip.opendns.com @resolver1.opendns.com
 sudo nmap -sn 192.167.1.0/24 # last field turned to "0" to scan full range (0-255)
 # find IP and subnet mask
 ifconfig | grep -e inet | grep netmask | tail -1
-
+# CONNECTING TO WIFI VIA CLI -- NETWORK MANAGER MUST BE DISABLED
+# list network interfaces
+ip link
+# get IP addresses for devices
+ip a # ifconfig -a
+# turn on device
+ifconfig <device> up
+# find wireless interfaces
+iwconfig
+# scan for access points of other interfaces
+iwlist <your_device> scanning | grep ESSID
+# associate with access point
+iwconfig <your_device> essid <name_of_access_point> key <password_for_access_point>
+# request IP address for device
+dhclient <your_device>
+# disable device to reconnect using network manager
+ifconfig <your_device> down
+# END
 
 # list size of drive
 fdisk -l | grep <drive>

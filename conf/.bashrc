@@ -122,4 +122,8 @@ fi
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit --"
 
 export PATH="$PATH:$HOME/bin"
-export HAFH="/media/joes/PATRIOT/"
+#export OPCLI_ROOT="/home/$USER/overpass/op-cli"
+#export PATH=${OPCLI_ROOT}:$PATH
+#source "${OPCLI_ROOT}/opcli.completion"
+
+export HAFH="/media/joes/PATRIOT"
