@@ -9,3 +9,5 @@ set expandtab
 set pastetoggle=<F9>
 " Number lines
 set number
+" Enable highlighting
+syntax on
