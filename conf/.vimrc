@@ -11,3 +11,5 @@ set pastetoggle=<F9>
 set number
 " Enable highlighting
 syntax on
+" Make bold bright text
+set background=dark

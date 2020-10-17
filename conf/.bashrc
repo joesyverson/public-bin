@@ -57,11 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-PS1='\[\033[1;31m\]$ >\[\033[00m\] '
-PS1='\[\033[1;31m\]$ >\[\033[00m\] '
+    PS1='\[\033[1;31m\]$ <\[\033[00m\] '
 else
-PS1='\[\033[1;31m\]$ >\[\033[00m\] '
-PS1='\[\033[1;31m\]$ >\[\033[00m\] '
+    PS1='\[\033[1;31m\]$ <\[\033[00m\] '
 fi
 unset color_prompt force_color_prompt
 
@@ -121,9 +119,5 @@ fi
 # Sergiu's kick ass git log config
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit --"
 
-export PATH="$PATH:$HOME/bin"
-#export OPCLI_ROOT="/home/$USER/overpass/op-cli"
-#export PATH=${OPCLI_ROOT}:$PATH
-#source "${OPCLI_ROOT}/opcli.completion"
+export PATH="$PATH:$HOME/Bin"
 
-export HAFH="/media/joes/PATRIOT"
